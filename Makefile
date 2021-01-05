@@ -35,7 +35,7 @@ $(BUILD_DIR)/$(TARGET).ihx: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 clean:
-	$(RM) -rf $(BUILD_DIR) $(TARGET).ihx
+	$(RM) -rf $(BUILD_DIR)
 
 $(BUILD_DIR)/%.rel: %.c
 	mkdir -p $(dir $@)
