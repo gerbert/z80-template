@@ -27,18 +27,17 @@ ASFLAGS = -plosgff
 SRCS += src/main.c
 SRCS += src/vt.c
 
-OBJS += src/main.rel src/vt.rel
+OBJS = $(addprefix $(BUILD_DIR)/, $(addsuffix .rel, $(basename $(SRCS))))
 
-.PHONY: $(TARGET).ihx
+.PHONY: $(BUILD_DIR)/$(TARGET).ihx
 
-$(TARGET).ihx: $(TARGET).rel
-
-$(TARGET).rel: $(OBJS)
-	$(CC) $(CFLAGS) main.rel vt.rel
+$(BUILD_DIR)/$(TARGET).ihx: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 clean:
-	$(RM) -f *.noi *.lk *.mem *.sym *.rst *.lst *.ihx *.asm *.rel *.map
+	$(RM) -rf $(BUILD_DIR) $(TARGET).ihx
 
-%.rel: %.c
-	$(CC) $(CFLAGS) -c $<
+$(BUILD_DIR)/%.rel: %.c
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
