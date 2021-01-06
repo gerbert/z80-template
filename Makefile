@@ -2,9 +2,9 @@ TARGET = template
 MCU = z80
 
 BUILD_DIR = build
-STM_TOOLS_PATH = /usr/local/Cellar/sdcc/4.0.0
-TOOLCHAIN = $(STM_TOOLS_PATH)/bin
-TOOLCHAIN_INCLUDE = $(TOOLCHAIN)/share/sdcc/include
+TOOLCHAIN_PATH = /usr/local/Cellar/sdcc/4.0.0
+TOOLCHAIN = $(TOOLCHAIN_PATH)/bin
+TOOLCHAIN_INCLUDE = $(TOOLCHAIN_PATH)/share/sdcc/include
 
 CC = $(TOOLCHAIN)/sdcc
 LD = $(TOOLCHAIN)/sdld
